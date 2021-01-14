@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myboot.myblog.mapper.LinkMapper">
+    <!-- 查询链接数量 -->
+    <select id="totalLinks" resultType="int">
+        select count(link_id) from link where is_deleted = 0;
+    </select>
+    <!-- 查询所有链接 -->
+    <select id="findAllLinks" resultType="blogLink">
+        select * from link where is_deleted = 0
+        <if test="str == 'linkName'">
+            order by link_name
+        </if>
+        <if test="str == 'linkUrl'">
+            order by link_url
+        </if>
+        <if test="str == 'linkDescription'">
+            order by link_description
+        </if>
+        <if test="str == 'linkRank'">
+            order by link_rank
+        </if>
+        <if test="str == 'createTime'">
+            order by create_time
+        </if>
+        <if test="str == null">
+            order by link_id
+        </if>
+        <if test="order == 'asc'">
+            ASC
+        </if>
+        <if test="order == 'desc'">
+            DESC
+        </if>
+        limit #{start},#{limit}
+    </select>
+    <!-- 根据类型查询链接 -->
+    <select id="findLinkByType" resultType="blogLink">
+        select * from link where link_type = #{id}
+    </select>
+    <!-- 根据id查询链接 -->
+    <select id="findLinkById" resultType="blogLink">
+        select * from link where link_id = #{id}
+    </select>
+    <!-- 添加链接 -->
+    <insert id="saveLink" parameterType="blogLink">
+        insert into link(link_type, link_name, link_url, link_description, link_rank, is_deleted, create_time)
+        VALUES(#{linkType},#{linkName},#{linkUrl},#{linkDescription},#{linkRank},0,#{createTime})
+    </insert>
+    <!-- 更新链接 -->
+    <update id="updateLink" parameterType="blogLink">
+        update link set link_type=#{linkType}, link_name=#{linkName}, link_url=#{linkUrl},
+        link_description=#{linkDescription}, link_rank=#{linkRank}
+        where link_id = #{linkId}
+    </update>
+    <!-- 删除链接 -->
+    <update id="deleteLink" parameterType="int">
+        update link set is_deleted = 1 where link_id = #{id}
+    </update>
+</mapper>

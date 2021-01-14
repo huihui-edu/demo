@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myboot.myblog.mapper.ConfigurationMapper">
+    <!-- 查询站点信息 -->
+    <select id="findAllConfigs" resultType="blogConfig">
+        select * from config ;
+    </select>
+    <!-- 修改站点信息 -->
+    <update id="updateWebsite">
+        update config set config_value = #{value},update_time = #{date}
+        where config_name = #{name}
+    </update>
+</mapper>

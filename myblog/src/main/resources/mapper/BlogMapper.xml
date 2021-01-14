@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myboot.myblog.mapper.BlogMapper">
+    <!--      管理员模块       -->
+
+    <!-- 查询所有博客 -->
+    <select id="findBlogByPage" resultType="blog">
+        select * from blog
+        <if test="key != null">
+            WHERE blog_title LIKE #{key} OR blog_category_name like #{key}
+        </if>
+        <if test="key == null">
+            where is_deleted = 0
+        </if>
+        <if test="str == null">
+            order by blog_id
+        </if>
+        <if test="str == 'blogTitle'">
+            ORDER BY blog_title
+        </if>
+        <if test="str == 'blogCoverImage'">
+            order by blog_cover_image
+        </if>
+        <if test="str == 'blogViews'">
+            ORDER BY blog_views
+        </if>
+        <if test="str == 'blogStatus'">
+            ORDER BY blog_status
+        </if>
+        <if test="str == 'blogCategoryName'">
+            ORDER BY blog_category_name
+        </if>
+        <if test="str == 'createTime'">
+            ORDER BY create_time
+        </if>
+        <if test="order == 'asc'">
+            ASC
+        </if>
+        <if test="order == 'desc'">
+            DESC
+        </if>
+        limit #{start},#{limit}
+    </select>
+    <!-- 查询博客数量 1为管理员查询,0为用户查询 -->
+    <select id="totalCount" resultType="int">
+        select count(blog_id) from blog where is_deleted = 0
+        <if test="status == 0">
+            and blog_status = 1
+        </if>
+    </select>
+    <!-- 查询博客===修改 -->
+    <select id="findBlogById" resultType="blog">
+        select * from blog where blog_id = #{id} and is_deleted = 0
+    </select>
+    <!-- 保存博客 -->
+    <insert id="saveBlog" parameterType="blog">
+        insert into blog(blog_title, blog_sub_url, blog_cover_image, blog_content,
+        blog_category_id, blog_category_name, blog_tags, blog_status, blog_views,
+        enable_comment, is_deleted, create_time, update_time)
+        values(#{blogTitle},#{blogSubUrl},#{blogCoverImage},#{blogContent},
+        #{blogCategoryId},#{blogCategoryName},#{blogTags},#{blogStatus},#{blogViews},
+        #{enableComment},#{isDeleted},#{createTime},#{updateTime})
+    </insert>
+    <!-- 修改博客 -->
+    <update id="updateBlog" parameterType="blog">
+        update blog set blog_id=#{blogId},blog_title=#{blogTitle},blog_sub_url=#{blogSubUrl},
+        blog_category_id=#{blogCategoryId},blog_tags=#{blogTags},blog_content=#{blogContent},
+        blog_cover_image=#{blogCoverImage},blog_status=#{blogStatus},enable_comment=#{enableComment}
+        where blog_id = #{blogId}
+    </update>
+    <!-- 删除博客 -->
+    <update id="deleteBlog" parameterType="int">
+        update blog set is_deleted = 1 where blog_id = #{id}
+    </update>
+
+
+    <!--     前端模块    -->
+
+
+    <!-- 首页查询博客 -->
+    <select id="findBlog" resultType="blog">
+        select * from blog where is_deleted = 0 and blog_status = 1 order by create_time desc limit #{start},5
+    </select>
+    <!-- 按照浏览量排序，显示前5条记录 -->
+    <select id="findByViews" resultType="blog">
+        select * from blog where is_deleted = 0 and blog_status = 1 order by blog_views limit 0,5
+    </select>
+    <!-- 查询博客详情 -->
+    <select id="findBlogDetailById" resultType="blogDetail">
+        select b.blog_id,b.blog_title,b.blog_content,b.blog_views,b.create_time,b.enable_comment,ca.category_name
+        from blog b join blog_category ca on b.blog_category_id = ca.category_id
+        where b.blog_id = #{id} and b.is_deleted = 0
+    </select>
+    <!-- 浏览量加一 -->
+    <update id="addView" parameterType="int">
+        update blog set blog_views = blog_views + 1 where blog_id = #{id}
+    </update>
+    <!-- 根据标签查询博客 -->
+    <select id="totalCountByTag" resultType="blog">
+        select distinct b.* from blog b join blog_tag_relation btr on b.blog_id = btr.blog_id
+        join blog_tag bt on btr.tag_id = bt.tag_id
+        where bt.tag_name = #{tagName} and b.is_deleted = 0 and blog_status = 1 order by create_time desc limit #{start},5
+    </select>
+    <!-- 根据分类名称查询博客 -->
+    <select id="findBlogByCate" resultType="blog">
+        select * from blog where blog_category_name = #{cateName} and is_deleted = 0 and blog_status = 1
+        order by create_time desc limit #{start},5
+    </select>
+    <!-- 模糊搜索 -->
+    <select id="searchBlog" resultType="blog">
+        select * from blog where is_deleted = 0 and blog_title like #{keyword} and blog_status = 1
+        order by create_time desc limit #{start},5
+    </select>
+
+</mapper>

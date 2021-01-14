@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3163541a-9d00-4026-a28e-fd0cd4529b4d" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="blog: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\my_maven_local_respository" />
+        <option name="mavenHome" value="E:/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1mHrOWtxB3CfnrqpTN6PvQlS0Dz" />
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Tencent Files/2565036109/FileRecv/zifeiguanli" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.40355554" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="myboot.myblog.mapper" />
+      <recent name="myboot.myblog.service" />
+      <recent name="myboot.myblog.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA-Projects\SpringbootProjects\myblog\src\main\java\myboot\myblog\domain" />
+      <recent name="E:\IDEA-Projects\SpringbootProjects\myblog\src\main\resources\static\admin\plugins\jquery" />
+      <recent name="E:\IDEA-Projects\SpringbootProjects\myblog\src\main\resources\templates" />
+      <recent name="E:\IDEA-Projects\SpringbootProjects\myblog\src\main\resources\static" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyblogApplication">
+    <configuration name="MyblogApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myblog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="myboot.myblog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="myboot.myblog" />
+      <option name="MAIN_CLASS_NAME" value="myboot.myblog.MyblogApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyblogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="myblog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="myboot.myblog.MyblogApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.MyblogApplicationTests.contextLoads" />
+      <item itemvalue="Spring Boot.MyblogApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MyblogApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <option name="contentProportion" value="0.14071038" />
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@461d4b5f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@461d4b5f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@508c6c89" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3163541a-9d00-4026-a28e-fd0cd4529b4d" name="Default Changelist" comment="" />
+      <created>1609161325253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609161325253</updated>
+      <workItem from="1609161328539" duration="6712000" />
+      <workItem from="1609200335976" duration="2301000" />
+      <workItem from="1609203250192" duration="904000" />
+      <workItem from="1609205336386" duration="9000" />
+      <workItem from="1609220157384" duration="10499000" />
+      <workItem from="1609241448166" duration="7831000" />
+      <workItem from="1609253242945" duration="3364000" />
+      <workItem from="1609287129288" duration="19298000" />
+      <workItem from="1609322008456" duration="7554000" />
+      <workItem from="1609374128609" duration="1413000" />
+      <workItem from="1609464737234" duration="17321000" />
+      <workItem from="1609490946388" duration="8123000" />
+      <workItem from="1609505380066" duration="2132000" />
+      <workItem from="1609513437292" duration="444000" />
+      <workItem from="1609546791129" duration="10744000" />
+      <workItem from="1609568418216" duration="2462000" />
+      <workItem from="1609576032886" duration="5093000" />
+      <workItem from="1609591128024" duration="6899000" />
+      <workItem from="1609633891935" duration="3001000" />
+      <workItem from="1609642967584" duration="316000" />
+      <workItem from="1609732050696" duration="8992000" />
+      <workItem from="1609765109144" duration="2172000" />
+      <workItem from="1609817521688" duration="3182000" />
+      <workItem from="1609832389952" duration="1292000" />
+      <workItem from="1609838450466" duration="9676000" />
+      <workItem from="1609891266639" duration="3082000" />
+      <workItem from="1609917806227" duration="7986000" />
+      <workItem from="1609928335381" duration="609000" />
+      <workItem from="1610022322879" duration="1191000" />
+      <workItem from="1610113790064" duration="204000" />
+      <workItem from="1610180599730" duration="1081000" />
+      <workItem from="1610188555215" duration="7191000" />
+      <workItem from="1610246700750" duration="1756000" />
+      <workItem from="1610277617445" duration="13683000" />
+      <workItem from="1610330784115" duration="8485000" />
+      <workItem from="1610372717603" duration="43000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

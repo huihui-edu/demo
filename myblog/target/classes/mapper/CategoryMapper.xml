@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myboot.myblog.mapper.CategoryMapper">
+    <!-- 查询类别数量 -->
+    <select id="totalCategory" resultType="int">
+        select count(category_id) from blog_category where is_deleted = 0
+    </select>
+    <!-- 查询所有类别 -->
+    <select id="findCategories" resultType="blogCategory">
+        select * from blog_category where is_deleted = 0
+        <if test="str == null">
+            order by category_id
+        </if>
+        <if test="str == 'categoryName'">
+            order by category_name
+        </if>
+        <if test="str == 'categoryIcon'">
+            order by category_icon
+        </if>
+        <if test="str == 'createTime'">
+            order by create_time
+        </if>
+        <if test="order == 'asc'">
+            ASC
+        </if>
+        <if test="order == 'desc'">
+            DESC
+        </if>
+        limit #{start},#{limit}
+    </select>
+    <!-- 根据名字查询 -->
+    <select id="findCateByName" parameterType="string" resultType="blogCategory">
+        select * from blog_category where category_name = #{name} and category_icon = #{icon}
+    </select>
+    <!-- 保存分类 -->
+    <insert id="saveCategory" parameterType="blogCategory">
+        insert into blog_category(category_name, category_icon, category_rank, is_deleted, create_time)
+        values(#{categoryName},#{categoryIcon},#{categoryRank},#{isDeleted},#{createTime})
+    </insert>
+    <!-- 根据id查询 -->
+    <select id="findCateById" resultType="blogCategory">
+        select * from blog_category where category_id = #{id}
+    </select>
+    <!-- 更新 -->
+    <update id="updateCategory" parameterType="blogCategory">
+        update blog_category set category_name = #{categoryName},category_icon = #{categoryIcon}
+        where category_id = #{categoryId}
+    </update>
+    <!-- 删除 -->
+    <update id="deleteCategory" parameterType="int">
+        update blog_category set is_deleted = 1 where category_id = #{id}
+    </update>
+</mapper>

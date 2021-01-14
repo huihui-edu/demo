@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myboot.myblog.mapper.CommentMapper">
+    <!-- 查询留言总数 -->
+    <select id="totalComment" resultType="int">
+        select count(comment_id) from blog_comment where is_deleted = 0;
+    </select>
+    <!-- 查询所有留言 -->
+    <select id="findCommentByPage" resultType="blogComment">
+        select * from blog_comment where is_deleted = 0
+        <if test="str == null">
+            order by comment_id
+        </if>
+        <if test="str == 'commentBody'">
+            order by comment_body
+        </if>
+        <if test="str == 'commentCreateTime'">
+            order by comment_create_time
+        </if>
+        <if test="str == 'commentator'">
+            order by commentator
+        </if>
+        <if test="str == 'email'">
+            order by email
+        </if>
+        <if test="str == 'commentStatus'">
+            order by comment_status
+        </if>
+        <if test="str == 'replyBody'">
+            order by reply_body
+        </if>
+        <if test="order == 'asc'">
+            ASC
+        </if>
+        <if test="order == 'desc'">
+            DESC
+        </if>
+        limit #{start},#{limit}
+    </select>
+    <!-- 回复留言 -->
+    <update id="replyComment">
+        update blog_comment set reply_body = #{replyBody},reply_create_time = #{time}
+        where comment_id = #{id}
+    </update>
+    <!-- 根据id查询留言 -->
+    <select id="findCommentById" resultType="blogComment">
+        select * from blog_comment where comment_id = #{id}
+    </select>
+    <!-- 审核 -->
+    <update id="checkComment" parameterType="int">
+        update blog_comment set comment_status = 1 where comment_id = #{cid}
+    </update>
+    <!-- 删除 -->
+    <update id="deleteComment" parameterType="int">
+        update blog_comment set  is_deleted = 1 where comment_id = #{id}
+    </update>
+    <!-- 博客的留言 -->
+    <select id="totalCommentByBlogId" resultType="blogComment">
+        select * from blog_comment where is_deleted = 0 and
+        blog_id = #{blogId} order by comment_create_time desc
+        <if test="start >= 0">
+            limit #{start},8
+        </if>
+    </select>
+    <!-- 保存留言 -->
+    <insert id="saveComment" parameterType="blogComment">
+        insert into blog_comment(blog_id, commentator, email, website_url, comment_body, comment_create_time, reply_body,comment_status, is_deleted)
+        values(#{blogId},#{commentator},#{email},#{websiteUrl},#{commentBody},#{commentCreateTime},null ,0,0)
+    </insert>
+</mapper>

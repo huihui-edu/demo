@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myboot.myblog.mapper.TagMapper">
+    <!-- 标签总数 -->
+    <select id="totalTags" resultType="int">
+        select count(tag_id) from blog_tag where is_deleted = 0;
+    </select>
+    <!-- 查询所有标签 -->
+    <select id="findAllTags" resultType="blogTag">
+        select * from blog_tag where is_deleted = 0
+        <if test="str == null">
+            order by tag_id
+        </if>
+        <if test="str == 'tagName'">
+            order by tag_name
+        </if>
+        <if test="str == 'createTime'">
+            order by create_time
+        </if>
+        <if test="order == 'asc'">
+            ASC
+        </if>
+        <if test="order == 'desc'">
+            DESC
+        </if>
+        limit #{start},#{limit}
+    </select>
+    <!-- 根据名字查询 -->
+    <select id="findByName" resultType="blogTag">
+        select * from blog_tag where tag_name = #{name}
+    </select>
+    <!-- 保存 -->
+    <insert id="saveTag" parameterType="blogTag">
+        insert into blog_tag(tag_name, is_deleted, create_time)
+        VALUES(#{tagName},#{isDeleted},#{createTime})
+    </insert>
+    <!-- 删除 -->
+    <update id="deleteTag" parameterType="integer">
+        update blog_tag set is_deleted = 1 where tag_id = #{id}
+    </update>
+
+    <!-- 查询被引用的标签 -->
+    <select id="findTagUsed" resultType="blogTag">
+        select distinct tag.tag_id,tag_name from blog_tag tag join blog_tag_relation btr on tag.tag_id = btr.tag_id
+    </select>
+    <!-- 查询被引用的次数 -->
+    <select id="TagUsedCount" resultType="int">
+        select count(tag.tag_id) from blog_tag tag join blog_tag_relation btr
+        on tag.tag_id = btr.tag_id
+        where btr.tag_id = #{id}
+    </select>
+    <!-- 查询博客所属标签 -->
+    <select id="findTagByBlog" resultType="string">
+        select t.tag_name from blog_tag_relation btr join blog_tag t on btr.tag_id = t.tag_id
+        where blog_id = #{id}
+    </select>
+
+    <!-- 新建博客和标签的关系 -->
+    <insert id="saveTagRelation">
+        insert into blog_tag_relation(blog_id, tag_id, create_time)
+        VALUES(#{blogId},#{tagId},#{date})
+    </insert>
+
+</mapper>
